@@ -1,9 +1,7 @@
 package com.backend.webSocket.entity;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import org.hibernate.annotations.UuidGenerator;
 import org.hibernate.validator.constraints.UUID;
 
@@ -11,6 +9,10 @@ import java.util.List;
 
 @Entity
 public class Chat {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @UuidGenerator
     @Column(nullable = false, unique = true, updatable = false)
