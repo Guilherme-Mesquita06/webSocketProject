@@ -20,6 +20,8 @@ public class Mensagem {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     private Usuario usuarioRemetente;
 
+    private Long idSala;
+
     @Column(nullable = false, length = 2000)
     private String conteudo;
 
@@ -56,5 +58,21 @@ public class Mensagem {
 
     public void setCriadoEm(Instant criadoEm) {
         this.criadoEm = criadoEm;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getIdSala() {
+        return idSala;
+    }
+
+    public void setIdSala(Long idSala) {
+        this.idSala = idSala;
     }
 }

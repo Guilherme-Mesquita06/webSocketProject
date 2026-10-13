@@ -6,6 +6,7 @@ import com.backend.webSocket.entity.Usuario;
 import com.backend.webSocket.repository.UsuarioRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -20,6 +21,10 @@ public class UsuarioService {
     public Usuario cadastrar(UsuarioDto dto) {
         Usuario usuario = new Usuario(dto.getNome(), dto.getEmail(), dto.getSenha());
         return usuarioRepository.save(usuario);
+    }
+    public List<Usuario> listarUsuarios() {
+        List<Usuario> usuarios = usuarioRepository.findAll();
+        return usuarios;
     }
 
     public Optional<Usuario> login(String email, String senha) {

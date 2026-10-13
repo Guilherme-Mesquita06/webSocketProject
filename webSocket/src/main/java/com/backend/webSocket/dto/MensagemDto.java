@@ -9,8 +9,15 @@ public class MensagemDto {
     private Usuario usuarioRemetente;
     private String conteudo;
     private Instant criadoEm = Instant.now();
+    private Long idSala;
 
+    public Long getIdSala() {
+        return idSala;
+    }
 
+    public void setIdSala(Long idSala) {
+        this.idSala = idSala;
+    }
 
     public Usuario getUsuarioRemetente() {
         return usuarioRemetente;

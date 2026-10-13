@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import org.hibernate.annotations.UuidGenerator;
 import org.hibernate.validator.constraints.UUID;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -19,10 +20,16 @@ public class Sala {
     private UUID uuid;
 
     @OneToMany
-    private List<Usuario> usuarios;
+    private List<Long> idUsuarios = new ArrayList<>();
 
     @OneToMany
-    private List<Mensagem> mensagens;
+    private List<Mensagem> mensagens = new ArrayList<>();
+
+    public void adicionarUsuario(Long idUsuario) {
+        idUsuarios.add(idUsuario);
+    }
+
+
 
 
     public UUID getUuid() {
@@ -33,11 +40,27 @@ public class Sala {
         this.uuid = uuid;
     }
 
-    public List<Usuario> getUsuarios() {
-        return usuarios;
+    public List<Long> getIdUsuarios() {
+        return idUsuarios;
     }
 
-    public void setUsuarios(List<Usuario> usuarios) {
-        this.usuarios = usuarios;
+    public void setIdUsuarios(List<Long> idUsuarios) {
+        this.idUsuarios = idUsuarios;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public List<Mensagem> getMensagens() {
+        return mensagens;
+    }
+
+    public void setMensagens(List<Mensagem> mensagens) {
+        this.mensagens = mensagens;
     }
 }

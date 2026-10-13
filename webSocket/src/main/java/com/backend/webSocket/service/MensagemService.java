@@ -6,6 +6,8 @@ import com.backend.webSocket.entity.Mensagem;
 import com.backend.webSocket.repository.MensagemRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class MensagemService {
     private final MensagemRepository mensagemRepository;
@@ -16,6 +18,7 @@ public class MensagemService {
 
     public Mensagem cadastrar(MensagemDto mensagemDto){
         Mensagem mensagem = new Mensagem();
+        mensagem.setIdSala(mensagemDto.getIdSala());
         mensagem.setUsuarioRemetente(mensagemDto.getUsuarioRemetente());
         mensagem.setConteudo(mensagemDto.getConteudo());
         mensagem.setCriadoEm(mensagemDto.getCriadoEm());
@@ -23,7 +26,8 @@ public class MensagemService {
          return mensagemRepository.save(mensagem);
     }
 
+    public List<Mensagem> listarMensagemOrderDesc(Long idSala){
 
-
-
+        return mensagemRepository.findAllBySalaIdOrderByCriadoEmDesc(idSala);
+    }
 }
